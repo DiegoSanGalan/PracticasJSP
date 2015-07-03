@@ -12,25 +12,7 @@
 </head>
 
 <body>
-	<img src="sandro.jpg">
-
-
-	<%-- EXPRESIONES --%>
 	
-	<%-- FIN EXPRESIONES --%>
-	<form name = "adivinador" action = "AdivinoTuNumero.jsp" >
-
-	<!-- AQUI PONDRÉ EL NÚNERO QUE PIENSO QUE ES EL CORRECTO -->
-	<input type="text" value = "<%=medio%>" name="numeroaprobar"/>
-
-	<select name="tunumero">
-	   <option value="1">Es Mayor</option> 
-	   <option value="2">Es Menor</option> 
-	   <option value="3">Has Acertado</option>
-	</select>
-	<input type="submit" value = "Validar Elección" name="enviar"/>
-	</form>
-
 
 
 <%-- SCRIPTLETS O CÓDIGO JAVA --%>
@@ -40,9 +22,9 @@ Calcular calc = new Calcular();
 
 // si es la primera vez que entra... no hay parámetro porque no ha seleccionado nada
 // en el select
-if (null != request.getParameter("tunumero"))
+if (null != request.getParameter("acierto"))
 {
-	String resultado = request.getParameter("tunumero");
+	String resultado = request.getParameter("acierto");
 	tuNumero = (Integer)request.getAttribute("numeroaprobar");
 	//session.setAttribute("tunumero", resultado);
 	//session.setAttribute("numeroaprobar", tuNumero);
@@ -53,7 +35,7 @@ if (null != request.getParameter("tunumero"))
 		limInf=medio;
 		medio = calc.Media (limInf, limSup);
 		//session.setAttribute("numeroaprobar", medio);
-		response.sendRedirect("AdivinoTunumero.jsp");
+		//response.sendRedirect("AdivinoTuNumero.jsp");
 		
 	}
 	else 
@@ -63,7 +45,7 @@ if (null != request.getParameter("tunumero"))
 		limSup = medio;
 		medio = calc.Media(limInf, limSup);
 		//session.setAttribute("numeroaprobar", medio);
-		response.sendRedirect("AdivinoTunumero.jsp");
+		//response.sendRedirect("AdivinoTuNumero.jsp");
 		
 		}
 		else
@@ -89,14 +71,17 @@ else
 	<!-- AQUI PONDRÉ EL NÚNERO QUE PIENSO QUE ES EL CORRECTO -->
 	<input type="text" value = "<%=medio%>" name="numeroaprobar"/>
 
-	<select name="tunumero">
+	<select name="acierto">
 	   <option value="1">Es Mayor</option> 
 	   <option value="2">Es Menor</option> 
 	   <option value="3">Has Acertado</option>
 	</select>
 	<input type="submit" value = "Validar Elección" name="enviar"/>
 	</form>
-<%}%>
+	
+	<%//response.sendRedirect("AdivinoTuNumero.jsp");
+	
+}%>
 
 
 

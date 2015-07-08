@@ -10,6 +10,18 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-  
+  <servlet>
+    <servlet-name>upload</servlet-name>
+    <servlet-class>service.UploadFileExample</servlet-class>
+    <init-param><param-name>RUTA_SUBIDA_FICHEROS</param-name><param-value>C:\logs</param-value></init-param>
+    <multipart-config>
+      <max-file-size>3145728</max-file-size>
+      <max-request-size>5242880</max-request-size>
+    </multipart-config>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>upload</servlet-name>
+    <url-pattern>/upload</url-pattern>
+  </servlet-mapping>
   
 </web-app>

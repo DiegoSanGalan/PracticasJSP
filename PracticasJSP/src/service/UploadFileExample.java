@@ -46,30 +46,36 @@ public class UploadFileExample extends HttpServlet{
 	    return cabecera;
 	}
 	
+	/**
+	 * Método privado para obtener la extensión
+	 * @param cabecera
+	 * @return
+	 */
 	private String obtenerExt(String cabecera) {
 		String extension = "";
 		char c ;
 		char punto ='.';
-		int posicion = 0;
+		int i = 0;
+		
 		int tam = cabecera.length();
+		int posicion = 0;
+		i = tam-1;
 		boolean encontrado = false;
 		
-		while ((tam < 0)&& (!encontrado))
+		while ((i > 0) && (!encontrado))
 		{
 			
+				c = cabecera.charAt(i);
+				if (c == punto)
+				{
+					posicion = i+1;
+					encontrado = true;
+				}
+				i--;
+			
 		}
-		for (int i= cabecera.length(); i<1; i--)
-		{
-			c = cabecera.charAt(i);
-			if (c == punto)
-			{
-				posicion = (cabecera.length())-(i+1);
-			}
-		}
+		
 		extension = cabecera.substring(posicion); // lo recorto en la posicion del punto hasta el final
-		
-		
-				
 		return extension;
 	}
 	
